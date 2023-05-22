@@ -143,6 +143,42 @@ id,fname,lname,company,position,salary
 
 #### json_or_ruby_to_csv usage with rails controller  
 
+You can include the functionality of this gem in your controller class.
+
+*for example*
+
+If you want your controller action to return a CSV formated data after fetching data from the database, you can do it as follow.
+
+```
+require 'json_or_ruby_to_csv'
+class ConvertsController < ApplicationController
+  include JsonOrRubyToCsv
+  def index
+    input = params_value[:data]
+    result = array_or_hash_to_csv(input)
+    render plain: result, status: :ok
+  end
+
+
+  def previous
+    all_employee = Employee.select(:id, :fname, :lname, :salary, :company, :position)
+    result = activerecord_to_csv(all_employee)
+    render plain: result, status: :ok
+  end
+
+  private
+
+  def params_value
+    params.require(:data) # there must be data
+    params.permit(data: %i[id fname lname company position salary]) # list of optional attributes
+  end
+end
+
+
+```
+
+`index` action controller method will convert array of params data to csv formated string where as `previous` will return csv formated string after fetching data from database.
+
 ## 👥 Authors <a name="authors"></a>
 
  👤 Melashu Amare
@@ -153,7 +189,7 @@ id,fname,lname,company,position,salary
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-Contributions, issues, and feature requests are welcome!
+This repo is open for contributions. Issues, and feature requests are welcome!
 
 Feel free to check the [issues page.](https://github.com/melashu/json_or_ruby_to_csv/issues)
 
