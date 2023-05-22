@@ -5,7 +5,6 @@ module JsonOrRubyToCsv
   def array_or_hash_to_csv(data)
 
     case data
-
     when Array
       begin
         new_data = data.map(&:to_h)
@@ -40,24 +39,3 @@ module JsonOrRubyToCsv
 
 end
 
-
-
-# class Dummy
-
-#   include JsonOrRubyToCsv
-
-
-
-#   def show(data)
-
-#     array_or_hash_to_csv(data)
-
-#   end
-
-# end
-
-
-
-# d = Dummy.new
-
-# p d.show({name:'Meshu'})

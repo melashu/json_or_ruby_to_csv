@@ -1,6 +1,4 @@
 module Helper
-  def name; end
-
   def convert_array_to_csv(data)
     csv_keys = data[0].keys.join(',')
 
