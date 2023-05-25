@@ -48,7 +48,7 @@ If you want to convert `arrays of JSON objects`, `arrays of hashes`, `arrays of 
 
 <i>For example </i>
 
-```
+```ruby
 
 require 'json_or_ruby_to_csv'
 class Employee
@@ -61,7 +61,7 @@ end
 ```
 Let's create `Employee` object and send array of object to `get_csv_data` method.
   
-```
+```ruby
 employee = Employee.new
 data_list =  [
     { "id": 200,
@@ -95,7 +95,7 @@ print employee.get_csv_data(data_list)
 
 **The output looks like below**
 
-``` 
+```csv 
 id,fname,lname,company,position,salary
 200,Meshu,Amare,XYZ.com,DevOps IT Operations,4500
 201,Solomon,Alebachew,XYZ.com,Rails Developer,5000
@@ -108,7 +108,7 @@ If you want to conver `ActiveRecord::Relation` **(collection of objects fetched 
 
 *For example*
 
-```
+```ruby
 
 require 'json_or_ruby_to_csv'
 class Employee
@@ -126,7 +126,7 @@ Here `get_data_as_csv` method first retrive data from the database, then pass to
 
 Let's create `Employee` object and call `get_data_as_csv` method.
 
-```
+```ruby
 employee = Employee.new
 employee.get_data_as_csv
 
@@ -134,7 +134,7 @@ employee.get_data_as_csv
 
 **The output looks like below**
 
-``` 
+```csv 
 id,fname,lname,company,position,salary
 200,Meshu,Amare,XYZ.com,DevOps IT Operations,4500
 201,Solomon,Alebachew,XYZ.com,Rails Developer,5000
@@ -149,7 +149,7 @@ You can include the functionality of this gem in your controller class.
 
 If you want your controller action to return a CSV formated data after fetching data from the database, you can do it as follow.
 
-```
+```ruby
 require 'json_or_ruby_to_csv'
 class ConvertsController < ApplicationController
   include JsonOrRubyToCsv
