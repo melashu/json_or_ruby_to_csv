@@ -22,12 +22,16 @@ module Helper
 
     convert_array_to_csv(array_value)
   rescue StandardError
-    'Invalid format!'
+    invalid_format
   end
 
   def object_to_hash(data)
     convert_hash_to_csv(data.attributes)
   rescue StandardError
+    invalid_format
+  end
+
+  def invalid_format
     'Invalid format!'
   end
 end
